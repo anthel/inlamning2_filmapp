@@ -5,13 +5,18 @@ const mongoose = require("mongoose");
 const movieSchema = require("./movieSchema");
 const MovieModel = mongoose.model("Movie", movieSchema);
 
+const User = require('./user.js');
+
 function connectDb() {
   return mongoose
-    .connect("mongodb://localhost:27017/movies")
-    .then(() => console.log(" mongo DB connected"));
+    .connect("mongodb://localhost:27017/users", {useNewUrlParser: true});
 }
 
 module.exports = {
   connectDb,
-  MovieModel,
+  models: {
+    MovieModel,
+    User
+  }
+  
 };

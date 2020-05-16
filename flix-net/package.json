@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "mocha ./tests --recursive | exit 0",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "backend": "nodemon ./backend/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
