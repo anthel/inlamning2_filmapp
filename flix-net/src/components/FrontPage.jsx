@@ -4,7 +4,7 @@ export default function FrontPage() {
   return (
     <div className="wrapperWatchlist">
     
-      <h1>front</h1>
+      <h1>Movie Carousel</h1>
     </div>
   )
 }

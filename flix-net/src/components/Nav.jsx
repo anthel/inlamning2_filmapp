@@ -1,20 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import flixnet from '../svg/flixnet.svg'
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import StarIcon from '@material-ui/icons/Star';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import PersonIcon from '@material-ui/icons/Person';
 
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
 
@@ -94,7 +86,7 @@ export default function Nav() {
 
   return (
     <div className="navBar">
-      <img src={flixnet} className="logo"/>
+      <img src={flixnet} className="logo" alt="logo"/>
       <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon className={classes.searchIconInSearch}/>
@@ -110,9 +102,9 @@ export default function Nav() {
             />
           </div>
       <div className="navLinks">
-        <NavLink className="navLink" to='/Watchlist'><StarIcon/>Watchlist</NavLink>
-        <NavLink className="navLink" to='/Rendermovies'><ViewAgendaIcon/>Genre</NavLink>
-        <NavLink className="navLink" to='/Login'><PersonIcon/>Login</NavLink>
+        <NavLink className="navLink" to='/Watchlist'><StarIcon className="navIcon"/>Watchlist</NavLink>
+        <NavLink className="navLink" to='/Rendermovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
+        <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink>
       </div>
     </div> 
   )
