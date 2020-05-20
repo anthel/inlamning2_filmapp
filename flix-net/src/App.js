@@ -12,7 +12,6 @@ import Loginscreen from './components/LoginScreen'
 function App() {
   return (
     <div className="App">
-      <Loginscreen/>
       <BrowserRouter>
         <Nav/>
         <Route path='/' exact   component={FrontPage}></Route>
