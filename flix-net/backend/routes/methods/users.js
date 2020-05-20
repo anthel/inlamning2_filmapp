@@ -23,7 +23,18 @@ createUser = (req, res, next) => {
   .catch(error => next(error))
 }
 
+loginUser = (req, res, next) => {
+  const { username, password } = req.body
+  req.models.User.find()
+  .then(users => users.find(user => user.username === username && user.password === password))
+  .then(autenticatedUser => autenticatedUser ? res.status(202).send() : res.status(404).send())
+  .catch(error => next(error))
+}
+
 module.exports = {
   getUsers,
-  createUser
+  createUser,
+  loginUser
 };
+
+

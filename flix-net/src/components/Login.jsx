@@ -130,7 +130,7 @@ function LoginScreen(props) {
             fullWidth
             id="userName"
             label="Username"
-            name="userName"
+            name="username"
             autoComplete="userName"
             autoFocus
           />
