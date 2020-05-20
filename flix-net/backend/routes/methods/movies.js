@@ -1,22 +1,31 @@
 const { MovieModel } = require("../../db");
 
 getFourMovies = (req, res, next) => {
-  console.log(req.models.movies)
-  req.models.movies.forEach((movie)=>{
-    res.send(movie);
+  // console.log('runs')
+  // const fourMovies = req.models.movies.slice(1, 4);
+  // console.log(fourMovies)
+  // return res.send(fourMovies)
+  console.log('runs')
+  req.models.MovieModel.find()
+  .then((response)=>{
+    if(response.length > 0){
+      res.status(204).send();
+    }
+     req.models.MovieModel.insertMany(req.models.movies)
+    .then((response) => {
+      console.log(response)
+      return res.status(201).send(response);
+    })
   })
-  // console.log('in backend')
-  // console.log(MovieModel)
-  // MovieModel.forEach((movie)=> {
-  //   console.log(movie)
-  //   return res.send(movie[0]);
-  // })
-  // console.log(movies)
-  // .then((movies) =>{
-  //   return res.send(movies)
-  // }).catch((error) =>{
-  //   return next(error)
-  // });
+ 
+}
+
+postMovies = (req, res, next) => {
+  req.models.MovieModel.insertMany(req.models.movies)
+  .then((response) => {
+    return res.status(201).send(response);
+  })
+
 }
 
 

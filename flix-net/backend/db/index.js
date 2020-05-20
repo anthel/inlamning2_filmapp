@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // mongoose.set("debug", process.env.NODE_ENV !== "production");
 
 const movieSchema = require("./movieSchema");
-const MovieModel = mongoose.model("Movie", movieSchema);
+const MovieModel = mongoose.model("MovieModel", movieSchema);
 
 const User = require('./user.js');
 
