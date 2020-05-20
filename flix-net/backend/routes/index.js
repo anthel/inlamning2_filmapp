@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 router.get("/users", methods.getUsers);
+router.put("/users/:signInUser", methods.loginUser);
 router.post('/users', methods.createUser);
 
 
