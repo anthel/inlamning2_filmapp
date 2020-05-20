@@ -7,11 +7,12 @@ import RenderMovies from './components/RenderMovies';
 import Nav from './components/Nav';
 import LoginScreen from './components/Login';
 
-// import Loginscreen from './components/LoginScreen'
+import Loginscreen from './components/LoginScreen'
 
 function App() {
   return (
     <div className="App">
+      <Loginscreen/>
       <BrowserRouter>
         <Nav/>
         <Route path='/' exact   component={FrontPage}></Route>
@@ -19,7 +20,6 @@ function App() {
         <Route path='/Rendermovies'     component={RenderMovies}></Route>
         <Route path='/Login'     component={LoginScreen}></Route>
       </BrowserRouter>      
-      {/* <Loginscreen/> */}
     </div>
   );
 }

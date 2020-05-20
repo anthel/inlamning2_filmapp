@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    paddingTop: '10%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -28,18 +28,17 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
   },
   input: {
-    color: 'white',
+    // color: 'white',
   },
   linkText: {
-    color: 'white',
+    // color: 'white',
     fontSize: '1.2em',
     cursor: 'pointer'
   },
   cssLabel: {
-    color: 'white'
+    // color: 'white'
   },
   cssFocused: {
   },
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   notchedOutline: {
     borderWidth: '1px',
-    borderColor: 'white !important'
+    // borderColor: 'white !important'
   } ,
   errorMSG: {
     color: 'red',

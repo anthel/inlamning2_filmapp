@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Login from './Login';
 import SignUp from './SignUp'
-import { withRouter } from 'react-router-dom';
-import { loggIn, saveNewUser } from '../../Redux/Actions';
-import { useDispatch, useSelector } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
+// import { loggIn, saveNewUser } from '../../Redux/Actions';
+// import { useDispatch, useSelector } from 'react-redux';
 
 
 /**
@@ -20,8 +20,8 @@ const LoginScreen = (props) => {
     password:''
   });
 
-  const dispatch = useDispatch();
-  const usersRedux = useSelector(state => state.saveNewUserReducer)
+  // const dispatch = useDispatch();
+  // const usersRedux = useSelector(state => state.saveNewUserReducer)
   
   const handleInputToNewUser = e =>{
     setNewUser({...newUser, [e.target.name]: e.target.value});
@@ -40,29 +40,30 @@ const LoginScreen = (props) => {
    */
   const login = e => {
     e.preventDefault();
-    const sucessfullLoginUser = usersRedux.find((user)=>{             //INSERT BACKEND!
-      return user.username === signInUser.userName && user.password === signInUser.password
-    })
-    if(sucessfullLoginUser){                                           //INSERT BACKEND!
-      sessionStorage.setItem('loggedInUser', sucessfullLoginUser.userName)
-      dispatch(loggIn(sucessfullLoginUser))
-      props.history.push('/Chat');
-    } else {
-      const userExists = usersRedux.find((user)=>{                         //INSERT BACKEND!
-        return user.username === signInUser.userName;
-      })
-      if(userExists){
-        alert('wrong password');
-        return;
-      }
-      alert('wrong credentials');
-    }
+    // const sucessfullLoginUser = usersRedux.find((user)=>{             //INSERT BACKEND!
+    //   return user.username === signInUser.userName && user.password === signInUser.password
+    // })
+    // if(sucessfullLoginUser){                                           //INSERT BACKEND!
+    //   sessionStorage.setItem('loggedInUser', sucessfullLoginUser.userName)
+      // dispatch(loggIn(sucessfullLoginUser))
+      // props.history.push('/Chat');
+    // } 
+    // else {
+    //   const userExists = usersRedux.find((user)=>{                         //INSERT BACKEND!
+    //     return user.username === signInUser.userName;
+    //   })
+    //   if(userExists){
+    //     alert('wrong password');
+    //     return;
+    //   }
+    //   alert('wrong credentials');
+    // }
   }
   
   // Adds a new user to saveNewUserReducer, sets a new empty object and toggles the form.
   const signUp = e => {
     e.preventDefault();
-    dispatch(saveNewUser(newUser));                                      //INSERT BACKEND!
+    // dispatch(saveNewUser(newUser));                                      //INSERT BACKEND!
     setNewUser({});
     toggeleSignUp();
   }
@@ -82,4 +83,4 @@ const LoginScreen = (props) => {
 
 }
 
-export default withRouter(LoginScreen)
+export default LoginScreen;
