@@ -1,6 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import flixnet from '../svg/flixnet.svg'
+import { NavLink, useHistory } from 'react-router-dom';
+// import flixnet from '../svg/flixnet.svg';
+import logo from '../svg/logo2.svg';
 import StarIcon from '@material-ui/icons/Star';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import PersonIcon from '@material-ui/icons/Person';
@@ -9,20 +10,6 @@ import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
-
-import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: purple,
-    secondary: green,
-  },
-  status: {
-    danger: 'orange',
-  },
-});
 
 
 const useStyles = makeStyles((theme) =>
@@ -78,29 +65,35 @@ const useStyles = makeStyles((theme) =>
 
 export default function Nav() {
 
+  const history = useHistory();
+
   const inputChange = (e) => {
     console.log(e.target.value)
+  }
+
+  const frontPage = () => {
+    history.push('/')
   }
 
   const classes = useStyles();
 
   return (
     <div className="navBar">
-      <img src={flixnet} className="logo" alt="logo"/>
+      <img src={logo} className="logo" alt="logo" onClick={() => frontPage()}/>
       <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon className={classes.searchIconInSearch}/>
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onKeyUp={(e) => inputChange(e)}
-            />
-          </div>
+        <div className={classes.searchIcon}>
+          <SearchIcon className={classes.searchIconInSearch}/>
+        </div>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ 'aria-label': 'search' }}
+          onKeyUp={(e) => inputChange(e)}
+        />
+      </div>
       <div className="navLinks">
         <NavLink className="navLink" to='/Watchlist'><StarIcon className="navIcon"/>Watchlist</NavLink>
         <NavLink className="navLink" to='/Rendermovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
@@ -109,19 +102,3 @@ export default function Nav() {
     </div> 
   )
 }
-
-{/* <div className="navBar">
-
- <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-      <BottomNavigationAction label="Watchlist" className="navLink" icon={<StarIcon />} />
-      <BottomNavigationAction label="Genre" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
-    </BottomNavigation>
-    </div> */}
