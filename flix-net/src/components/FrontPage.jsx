@@ -1,67 +1,55 @@
-import React from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
 
-export default function FrontPage() {
+export default class FrontPage extends Component {
+
+  // const [movies, getMovies ] = useState([])
+  constructor() {
+    super();
+    this.state = {
+      movies: []
+    }
+  }
+
+  componentDidMount = () =>{
+    console.log('runs')
+    fetch('/movies')
+    .then(res => res.json())
+    .then(movie => this.setState({movies: movie}));
+  }
+   
   
+  render() {
+    return (
+      <React.Fragment>
+        {this.state.movies !== null ? 
+        this.state.movies.map((movie)=>{
+          return(
+            <Carousel autoplay>
+            <div>
+              <h3>{movie}</h3>
+            </div>
+            <div>
+              <h3>Suggestion 2</h3>
+            </div>
+            <div>
+              <h3>Suggestion 3</h3>
+            </div>
+            <div>
+              <h3>Suggestion 4</h3>
+            </div>
+          </Carousel>
+          )
+         
+        })
+     
+        : null
+        }
+      </React.Fragment>
+    )
+  }
   
-  return (
-    <React.Fragment>
-   <Carousel autoplay>
-        <div>
-          <h3>Suggestion 1</h3>
-        </div>
-        <div>
-          <h3>Suggestion 2</h3>
-        </div>
-        <div>
-          <h3>Suggestion 3</h3>
-        </div>
-        <div>
-          <h3>Suggestion 4</h3>
-        </div>
-      </Carousel>
-    </React.Fragment>
-  )
 }
-
-//SLIDER FRÅN REACT SLICK
-// import Slider from "react-slick";
-
-// export default class SimpleSlider extends Component {
-//   render() {
-//     const settings = {
-//       dots: true,
-//       infinite: true,
-//       speed: 500,
-//       slidesToShow: 1,
-//       slidesToScroll: 1
-//     };
-//     return (
-//       <div>
-//         <h2> Single Item</h2>
-//         <Slider {...settings}>
-//           <div>
-//             <h3>1</h3>
-//           </div>
-//           <div>
-//             <h3>2</h3>
-//           </div>
-//           <div>
-//             <h3>3</h3>
-//           </div>
-//           <div>
-//             <h3>4</h3>
-//           </div>
-//           <div>
-//             <h3>5</h3>
-//           </div>
-//           <div>
-//             <h3>6</h3>
-//           </div>
-//         </Slider>
-//       </div>
-//     );
-//   }
 
 

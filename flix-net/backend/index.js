@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 //Middleware for accessing mongo models on every request
 app.use((req, res, next) => {
   req.models = models;
+  req.models.movies = movies;
   next()
 })
 // Access all routes from a separate file
