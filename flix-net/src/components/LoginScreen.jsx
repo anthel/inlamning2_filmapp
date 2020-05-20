@@ -40,6 +40,13 @@ const LoginScreen = (props) => {
    */
   const login = e => {
     e.preventDefault();
+    fetch(`http://localhost:4000/users/{signInUser}`)
+    .then(data => data.json())
+    .then(user => {
+      if(user === signInUser){
+
+      }
+    })
     // const sucessfullLoginUser = usersRedux.find((user)=>{             //INSERT BACKEND!
     //   return user.username === signInUser.userName && user.password === signInUser.password
     // })
@@ -63,10 +70,19 @@ const LoginScreen = (props) => {
   // Adds a new user to saveNewUserReducer, sets a new empty object and toggles the form.
   const signUp = e => {
     e.preventDefault();
-    // dispatch(saveNewUser(newUser));                                      //INSERT BACKEND!
-    setNewUser({});
-    toggeleSignUp();
+    fetch('http://localhost:4000/users', 
+    {
+      method: 'post',   
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newUser)
+    })
+    .then(info => info.json())
+    .then(data => console.log(data))
+    // setNewUser({});
+    // toggeleSignUp();
   }
+
+
 
   const toggeleSignUp = () => {
     setShowSignUp(!showSignUp)

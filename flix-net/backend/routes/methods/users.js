@@ -11,15 +11,16 @@ getUsers = (req, res, next) => {
 }
 
 createUser = (req, res, next) => {
+  const { firstname, lastname, username, email, password } = req.body
   req.models.User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  }).then((result) => {
-    return res.status(201).send(result);
-  }).catch((error) => {
-    next(error);
+    firstname, 
+    lastname, 
+    username, 
+    email, 
+    password
   })
+  .then(result => res.status(201).send(result))
+  .catch(error => next(error))
 }
 
 module.exports = {

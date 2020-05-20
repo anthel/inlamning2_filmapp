@@ -9,7 +9,7 @@ const User = require('./user.js');
 
 function connectDb() {
   return mongoose
-    .connect("mongodb://localhost:27017/users", {useNewUrlParser: true});
+    .connect("mongodb://localhost:27017/users", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 }
 
 module.exports = {
