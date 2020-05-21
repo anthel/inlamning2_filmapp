@@ -4,16 +4,18 @@ import 'antd/dist/antd.css';
 import layer from '../svg/layer.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
-import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn'
+import withHttpRequests from '../hoc/withHttpRequest';
+// import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn'
 
 
-export default class FrontPage extends Component {
+class FrontPage extends Component {
 
   // const [movies, getMovies ] = useState([])
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
-      movies: []
+      movies: [],
+      watchList: []
     }
   }
 
@@ -23,7 +25,6 @@ export default class FrontPage extends Component {
   //   .then(res => res.json())
   //   .then(movie => console.log(movie));
   // }
-   
   
   render() {
     return (
@@ -51,7 +52,7 @@ export default class FrontPage extends Component {
                     <h3><StarIcon/> IMDB RATING: 8.5</h3>
                     <div className="testDiv">
                     <Button variant="contained">Watch Trailer</Button>
-                    <AddWatchListBtn variant="contained"/>
+                    <Button variant="contained" color="primary" onClick={this.props.addToWatchlist}>Add To Watchlist</Button>
                     </div>
                   </div>
                 </div>
@@ -80,5 +81,7 @@ export default class FrontPage extends Component {
   }
   
 }
+
+export default withHttpRequests(FrontPage)
 
 
