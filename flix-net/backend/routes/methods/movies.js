@@ -16,17 +16,6 @@ addMoviesToDb = (req, res, next) => {
   })
 }
 
-postMovies = (req, res, next) => {
-  req.models.MovieModel.insertMany(req.models.movies)
-  .then((response) => {
-    return res.status(201).send(response);
-  })
-
-}
-
-
-
-
 module.exports = {
   addMoviesToDb,
   
