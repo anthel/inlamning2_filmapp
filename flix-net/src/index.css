@@ -82,13 +82,14 @@ h1 {
   text-align: center;
 }
 
-.watchListCard {
-  flex-grow: 1;
-  border: 1px solid red;  
-  min-width: 20%;
-  max-width: 100%;
-  
+.movie-card {
+  border: 1px solid red;
   margin: 20px;
+  height: 450px;
+}
+
+.movie-card > h1 {
+  color: white;
 }
 
 /* CAROUSEL */

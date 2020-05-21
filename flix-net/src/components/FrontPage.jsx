@@ -4,14 +4,18 @@ import 'antd/dist/antd.css';
 import layer from '../svg/layer.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
+import withHttpRequests from '../hoc/withHttpRequest';
+// import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn'
 
 
-export default class FrontPage extends Component {
+class FrontPage extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
+
     this.state = {
-      movies: []
+      movies: [],
+      watchList: []
     }
   }
 
@@ -25,7 +29,6 @@ export default class FrontPage extends Component {
   LinkToYouTube = (title) => {
     window.open("https://www.youtube.com/results?search_query="+ `trailer ${title}`); 
   }
-
   
   render() {
     return (
@@ -50,6 +53,7 @@ export default class FrontPage extends Component {
                     <div className="rating">
                       <h3><StarIcon/> IMDB RATING: {movie.imdbRating}</h3>
                       <Button variant="contained" onClick={() => this.LinkToYouTube(movie.Title)}>Watch Trailer</Button>
+                      <Button variant="contained" color="primary" onClick={this.props.addToWatchlist}>Add To Watchlist</Button>
                     </div>
                   </div>
 
@@ -64,5 +68,7 @@ export default class FrontPage extends Component {
   }
 
 }
+
+export default withHttpRequests(FrontPage)
 
 
