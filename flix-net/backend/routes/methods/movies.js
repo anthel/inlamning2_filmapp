@@ -1,5 +1,3 @@
-const { MovieModel } = require("../../db");
-
 addMoviesToDb = (req, res, next) => {
 
   req.models.MovieModel.find()
@@ -16,14 +14,6 @@ addMoviesToDb = (req, res, next) => {
   })
 }
 
-postMovies = (req, res, next) => {
-  req.models.MovieModel.insertMany(req.models.movies)
-  .then((response) => {
-    return res.status(201).send(response);
-  })
-
-}
-
 getMoviesForCarousel = (req, res, next) => {
   req.models.MovieModel.find()
   .sort({'imdbRating': -1})
@@ -34,8 +24,6 @@ getMoviesForCarousel = (req, res, next) => {
     next(error);
   })
 }
-
-
 
 
 module.exports = {
