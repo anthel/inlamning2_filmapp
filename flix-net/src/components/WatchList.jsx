@@ -4,8 +4,12 @@ import CardComponent from './CardComponent'
 export default function WatchList() {
   return (
     <div className="wrapperWatchlist">
-      <CardComponent>
-        <h1>movie 1</h1>
+      <CardComponent
+      title={"Joker"}
+      plot={'"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker."'}
+      genre={"Crime, Drama, Thriller"}
+      cast={"Joaquin Phoenix, Robert De Niro, Zazie Beetz, Frances Conroy"}
+      >
       </CardComponent>
       <CardComponent>
         <h1>movie 2</h1>

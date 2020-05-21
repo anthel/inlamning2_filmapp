@@ -82,14 +82,43 @@ h1 {
   text-align: center;
 }
 
+/* CSS for CardComponent */
+
 .movie-card {
   border: 1px solid red;
   margin: 20px;
   height: 450px;
+  position: relative;
 }
 
-.movie-card > h1 {
+.movie-card-image > img {
+  height: 100%;
+  width: 100%;
+}
+
+.movie-information {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 10px;
+  padding: 15px;
+}
+
+.movie-information h1, .movie-information h3, .movie-information h4 {
   color: white;
+}
+
+.movie-information h4 {
+  margin-top: 20px;
+}
+
+.movie-information h4:last-child {
+  margin: 0;
+}
+
+.genre-cast-bar {
+  position: absolute;
+  top: 100%;
 }
 
 /* CAROUSEL */
