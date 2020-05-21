@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import layer from '../svg/layer.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
+import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn'
 
 
 export default class FrontPage extends Component {
@@ -48,7 +49,10 @@ export default class FrontPage extends Component {
                   {/* <h4 className="release">Release Date 04 Oct 2019</h4> */}
                   <div className="rating">
                     <h3><StarIcon/> IMDB RATING: 8.5</h3>
+                    <div className="testDiv">
                     <Button variant="contained">Watch Trailer</Button>
+                    <AddWatchListBtn variant="contained"/>
+                    </div>
                   </div>
                 </div>
 
