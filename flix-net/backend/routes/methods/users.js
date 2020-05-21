@@ -11,18 +11,30 @@ getUsers = (req, res, next) => {
 }
 
 createUser = (req, res, next) => {
+  const { firstname, lastname, username, email, password } = req.body
   req.models.User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  }).then((result) => {
-    return res.status(201).send(result);
-  }).catch((error) => {
-    next(error);
+    firstname, 
+    lastname, 
+    username, 
+    email, 
+    password
   })
+  .then(result => res.status(201).send(result))
+  .catch(error => next(error))
+}
+
+loginUser = (req, res, next) => {
+  const { username, password } = req.body
+  req.models.User.find()
+  .then(users => users.find(user => user.username === username && user.password === password))
+  .then(autenticatedUser => autenticatedUser ? res.status(202).send() : res.status(404).send())
+  .catch(error => next(error))
 }
 
 module.exports = {
   getUsers,
-  createUser
+  createUser,
+  loginUser
 };
+
+

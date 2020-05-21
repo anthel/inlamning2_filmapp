@@ -91,7 +91,6 @@ export default function Nav() {
             input: classes.inputInput,
           }}
           inputProps={{ 'aria-label': 'search' }}
-          onKeyUp={(e) => inputChange(e)}
         />
       </div>
       <div className="navLinks">

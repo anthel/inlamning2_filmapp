@@ -5,7 +5,9 @@ import FrontPage from './components/FrontPage';
 import WatchList from './components/WatchList';
 import RenderMovies from './components/RenderMovies';
 import Nav from './components/Nav';
-import LoginScreen from './components/Login';
+
+
+import LoginScreen from './components/LoginScreen'
 
 function App() {
   return (

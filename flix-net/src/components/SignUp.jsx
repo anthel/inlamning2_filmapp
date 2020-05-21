@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   linkText: {
+    color: 'lightgrey',
     fontSize: '1.2em',
     cursor: 'pointer'
   },
@@ -113,7 +114,7 @@ function SignUp(props) {
                 onInput={(e)=>{checkFirstName(e)}}  
                 onBlur={(e)=>{checkFirstName(e)}}  
                 autoComplete="fname"
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 required
                 fullWidth
@@ -146,7 +147,7 @@ function SignUp(props) {
                 fullWidth
                 id="lastName"
                 label="Last Name"
-                name="lastName"
+                name="lastname"
                 autoComplete="lname"
                 InputLabelProps={{
                   classes: {
