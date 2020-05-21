@@ -1,7 +1,9 @@
 mongoose = require("mongoose");
 const movieSchema = new mongoose.Schema({
-  // insert movieScheema
-
+  Title: String,
+  Year: String,
+  Genre: String,
+  Poster: String
 });
 
 module.exports = movieSchema;
