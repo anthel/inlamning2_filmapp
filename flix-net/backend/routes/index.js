@@ -11,7 +11,8 @@ router.get("/users", methods.getUsers);
 router.put("/users/:signInUser", methods.loginUser);
 router.post('/users', methods.createUser);
 
-router.get("/movies", methodsMovies.getFourMovies)
+router.get("/movies/carousel", methodsMovies.getMoviesForCarousel);
+router.get("/movies", methodsMovies.addMoviesToDb)
 
 
 module.exports = router;
