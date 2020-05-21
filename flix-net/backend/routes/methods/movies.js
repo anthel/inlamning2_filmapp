@@ -11,13 +11,12 @@ getFourMovies = (req, res, next) => {
     if(response.length > 0){
       res.status(204).send();
     }
-     req.models.MovieModel.insertMany(req.models.movies)
+    req.models.MovieModel.insertMany(req.models.movies)
     .then((response) => {
       console.log(response)
       return res.status(201).send(response);
     })
   })
- 
 }
 
 postMovies = (req, res, next) => {
