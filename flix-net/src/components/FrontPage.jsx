@@ -1,12 +1,14 @@
 import React from 'react';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
+import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn';
 
 export default function FrontPage() {
   
   
   return (
     <React.Fragment>
+      <AddWatchListBtn />
    <Carousel autoplay>
         <div>
           <h3>Suggestion 1</h3>
