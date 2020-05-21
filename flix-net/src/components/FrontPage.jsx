@@ -1,69 +1,80 @@
-import React from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
-import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn';
+import layer from '../svg/layer.png';
+import StarIcon from '@material-ui/icons/Star';
+import Button from '@material-ui/core/Button';
 
-export default function FrontPage() {
+
+export default class FrontPage extends Component {
+
+  // const [movies, getMovies ] = useState([])
+  constructor() {
+    super();
+    this.state = {
+      movies: []
+    }
+  }
+
+  // componentDidMount = () =>{
+  //   console.log('runs')
+  //   fetch('http://localhost:4000/movies')
+  //   .then(res => res.json())
+  //   .then(movie => console.log(movie));
+  // }
+   
   
+  render() {
+    return (
+      <React.Fragment>
+        {/* {this.state.movies !== null ? 
+        this.state.movies.map((movie)=>{
+          return( */}
+          {/* autoplay */}
+            <Carousel> 
+            <div>
+              <div className="browserPosterWrapper">
+
+                <div className="shadowOnPoster"> 
+                  {/* <img src={layer} alt="layer" className="layer"/> */}
+                  <img className="browserPoster" alt="poster" src="https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"/>
+                </div>
+                
+                <div className="browserInfo">
+                  <h1 className="headerTitle">Joker</h1>
+                  <p className="plot">"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker."</p>
+                  <h5 className="genre">Crime Drama Thriller</h5>
+                  <p className="actors">Joaquin Phoenix, Robert De Niro, Zazie Beetz, Frances Conroy</p>
+                  {/* <h4 className="release">Release Date 04 Oct 2019</h4> */}
+                  <div className="rating">
+                    <h3><StarIcon/> IMDB RATING: 8.5</h3>
+                    <Button variant="contained">Watch Trailer</Button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div>
+              <h3>Suggestion 2</h3>
+            </div>
+            <div>
+              <h3>Suggestion 3</h3>
+            </div>
+            <div>
+              <h3>Suggestion 4</h3>
+            </div>
+          </Carousel>
+          {/* )
+         
+          })
+     
+        : null
+        }  */}
+      </React.Fragment>
+    )
+  }
   
-  return (
-    <React.Fragment>
-      <AddWatchListBtn />
-   <Carousel autoplay>
-        <div>
-          <h3>Suggestion 1</h3>
-        </div>
-        <div>
-          <h3>Suggestion 2</h3>
-        </div>
-        <div>
-          <h3>Suggestion 3</h3>
-        </div>
-        <div>
-          <h3>Suggestion 4</h3>
-        </div>
-      </Carousel>
-    </React.Fragment>
-  )
 }
-
-//SLIDER FRÅN REACT SLICK
-// import Slider from "react-slick";
-
-// export default class SimpleSlider extends Component {
-//   render() {
-//     const settings = {
-//       dots: true,
-//       infinite: true,
-//       speed: 500,
-//       slidesToShow: 1,
-//       slidesToScroll: 1
-//     };
-//     return (
-//       <div>
-//         <h2> Single Item</h2>
-//         <Slider {...settings}>
-//           <div>
-//             <h3>1</h3>
-//           </div>
-//           <div>
-//             <h3>2</h3>
-//           </div>
-//           <div>
-//             <h3>3</h3>
-//           </div>
-//           <div>
-//             <h3>4</h3>
-//           </div>
-//           <div>
-//             <h3>5</h3>
-//           </div>
-//           <div>
-//             <h3>6</h3>
-//           </div>
-//         </Slider>
-//       </div>
-//     );
-//   }
 
 

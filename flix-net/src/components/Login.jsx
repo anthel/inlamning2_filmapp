@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     // color: 'white',
   },
   linkText: {
-    // color: 'white',
+    color: 'lightgrey',
     fontSize: '1.2em',
     cursor: 'pointer'
   },
@@ -68,7 +68,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit">Mia, Emma, Oscar</Link>
+      <Link color="inherit">Ante, EnFinAnka, Emma, Oscar</Link>
       {' '}
       {new Date().getFullYear()}
       {'.'}
@@ -130,7 +130,7 @@ function LoginScreen(props) {
             fullWidth
             id="userName"
             label="Username"
-            name="userName"
+            name="username"
             autoComplete="userName"
             autoFocus
           />
