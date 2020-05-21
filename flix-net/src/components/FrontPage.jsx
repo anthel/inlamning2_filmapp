@@ -22,6 +22,10 @@ export default class FrontPage extends Component {
     .then(movie => this.setState({movies: movie}));
   }
 
+  LinkToYouTube = (title) => {
+    window.open("https://www.youtube.com/results?search_query="+ `trailer ${title}`); 
+  }
+
   
   render() {
     return (
@@ -45,7 +49,7 @@ export default class FrontPage extends Component {
                     <p className="actors">{movie.Actors}</p>
                     <div className="rating">
                       <h3><StarIcon/> IMDB RATING: {movie.imdbRating}</h3>
-                      <Button variant="contained">Watch Trailer</Button>
+                      <Button variant="contained" onClick={() => this.LinkToYouTube(movie.Title)}>Watch Trailer</Button>
                     </div>
                   </div>
 
@@ -55,11 +59,10 @@ export default class FrontPage extends Component {
      
         : null}  
         </Carousel>
-
       </React.Fragment>
     )
   }
-  
+
 }
 
 
