@@ -11,6 +11,14 @@ export const loggOut = () => {
   }
 }
 
+export const movieResults = (searchResults) => {
+  return{
+    type: 'MOVIE_RESULTS',
+    payload: searchResults
+  }
+}
+
+
 
 
 

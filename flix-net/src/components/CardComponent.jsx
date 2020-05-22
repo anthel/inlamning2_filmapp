@@ -20,7 +20,7 @@ export default class CardComponent extends Component {
     return (
       <div className="movie-card" onMouseEnter={this.showMoreInfo} onMouseLeave={this.hideInfo}>
         <div className="movie-card-image">
-          <img alt="poster" src="https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"/>
+          <img alt="poster" src={this.props.movie.Poster}/>
         </div>
         {this.props.children}
       </div>

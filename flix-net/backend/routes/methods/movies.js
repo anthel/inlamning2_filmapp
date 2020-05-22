@@ -14,6 +14,21 @@ addMoviesToDb = (req, res, next) => {
   })
 }
 
+getMovies = (req, res, next) =>{
+
+  req.models.MovieModel.find()
+  .then(allMovies => {
+    if (req.query.Title){
+      const matchingMovies = allMovies.filter(movie => movie.Title.toLowerCase().startsWith(req.query.Title) || movie.Title.toUpperCase().startsWith(req.query.Title ))
+      console.log(matchingMovies) 
+       res.send(matchingMovies)
+    }
+  })
+  .catch(err => {
+    next(err);
+  })
+}
+
 getMoviesForCarousel = (req, res, next) => {
   req.models.MovieModel.find()
   .sort({'imdbRating': -1})
@@ -30,6 +45,7 @@ getMoviesForCarousel = (req, res, next) => {
 
 module.exports = {
   addMoviesToDb,
-  getMoviesForCarousel
+  getMoviesForCarousel,
+  getMovies,
   
 };

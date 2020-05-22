@@ -1,6 +1,7 @@
 import React from 'react'
 import CardComponent from './CardComponent'
 
+
 export default function WatchList() {
   return (
     <div className="wrapperWatchlist">

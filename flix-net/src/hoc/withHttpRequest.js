@@ -19,6 +19,13 @@ export default function withHttpRequests(WrappedComponent) {
         body: JSON.stringify({movieId})
       })
     }
+
+     searchMovieTitle = e => {
+      return fetch('http://localhost:4000/movies/?Title=' + e.target.value)
+        .then(res => res.json())
+        .then(searchResult => searchResult)
+    }
+    
     
     mapStateToProps = (state, ownProps) => ({
       user: state.saveNewUserReducer.username,
@@ -27,11 +34,13 @@ export default function withHttpRequests(WrappedComponent) {
 
 
 
+
     render() {
       return (
         <WrappedComponent
-        addToWatchlist={this.addToWatchlist}  
-        {...this.props}
+          addToWatchlist={this.addToWatchlist}  
+          searchMovieTitle={this.searchMovieTitle}
+          {...this.props}
         />
       )
     }

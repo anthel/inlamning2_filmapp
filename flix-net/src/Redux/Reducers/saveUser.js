@@ -7,7 +7,6 @@ const initialState = {
 const saveNewUserReducer = (state=initialState, action) => {
   switch (action.type) {
     case 'LOGG_IN': 
-    console.log('action.type', action.type, action.payload.username );
       return {
         ...state, 
         authenticated: true, 
@@ -19,7 +18,9 @@ const saveNewUserReducer = (state=initialState, action) => {
       authenticated: false, 
       username: null
     };
-    default: return state;
+    
+    default: 
+      return state;
   }
     
 };

@@ -9,6 +9,11 @@ import PersonIcon from '@material-ui/icons/Person';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import withHttpRequests from '../hoc/withHttpRequest';
+
+
+import { useDispatch } from 'react-redux'
+import { movieResults } from '../Redux/Actions'
 
 
 
@@ -63,13 +68,20 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export default function Nav() {
+function Nav(props) {
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const inputChange = (e) => {
-    console.log(e.target.value)
+  const searchMovieTitle = e => {
+      fetch('http://localhost:4000/movies/?Title=' + e.target.value)
+      .then(res => res.json())
+      .then(searchResult => dispatch(movieResults(searchResult)))
+
+      
+
   }
+  
 
   const frontPage = () => {
     history.push('/')
@@ -91,6 +103,7 @@ export default function Nav() {
             input: classes.inputInput,
           }}
           inputProps={{ 'aria-label': 'search' }}
+          onChange={e=>searchMovieTitle(e)}
         />
       </div>
       <div className="navLinks">
@@ -101,3 +114,6 @@ export default function Nav() {
     </div> 
   )
 }
+
+
+export default Nav;
