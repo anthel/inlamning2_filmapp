@@ -26,6 +26,8 @@ getMoviesForCarousel = (req, res, next) => {
 }
 
 
+
+
 module.exports = {
   addMoviesToDb,
   getMoviesForCarousel
