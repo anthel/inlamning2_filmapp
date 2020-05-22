@@ -31,10 +31,27 @@ loginUser = (req, res, next) => {
   .catch(error => next(error))
 }
 
+saveMovieToUser = (req, res, next) =>{
+  console.log('runs')
+  console.log(req.body.movieId)
+  console.log(req.params.username)
+
+  req.models.User.findOneAndUpdate({username: req.params.username},
+    {$addToSet:{
+      watchList: req.body.movieId
+    }})
+  .then((result) => {
+    res.status(200).send()
+  }).catch((error) => {
+    next(error);
+  })
+}
+
 module.exports = {
   getUsers,
   createUser,
-  loginUser
+  loginUser,
+  saveMovieToUser
 };
 
 
