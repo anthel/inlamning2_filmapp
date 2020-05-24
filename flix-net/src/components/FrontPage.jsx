@@ -30,8 +30,8 @@ function FrontPage(props) {
     window.open("https://www.youtube.com/results?search_query="+ `trailer ${title}`); 
   }
 
-  const addToWatchlist = (movieId) =>{
-    props.addToWatchlist(movieId, usersRedux.username)
+  const addToWatchlist = (movie) =>{
+    props.addToWatchlist(movie, usersRedux.username)
   }
     
     return (
@@ -56,7 +56,7 @@ function FrontPage(props) {
                     <div className="rating">
                       <h3><StarIcon/> IMDB RATING: {movie.imdbRating}</h3>
                       <Button variant="contained" onClick={() => LinkToYouTube(movie.Title)}>Watch Trailer</Button>
-                      <Button variant="contained" color="primary" onClick={() => addToWatchlist(movie._id)}>Add To Watchlist</Button>
+                      <Button variant="contained" color="primary" onClick={() => addToWatchlist(movie)}>Add To Watchlist</Button>
                     </div>
                   </div>
 

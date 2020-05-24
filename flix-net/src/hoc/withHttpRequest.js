@@ -9,14 +9,14 @@ export default function withHttpRequests(WrappedComponent) {
     }
     
 
-    addToWatchlist = (movieId, user) =>{
-      console.log(movieId)
+    addToWatchlist = (movie, user) =>{
+      console.log(movie)
       fetch('http://localhost:4000/users/' + `${user}`,{
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({movieId})
+        body: JSON.stringify({movie})
       })
     }
 

@@ -33,12 +33,12 @@ loginUser = (req, res, next) => {
 
 saveMovieToUser = (req, res, next) =>{
   console.log('runs')
-  console.log(req.body.movieId)
+  console.log(req.body.movie)
   console.log(req.params.username)
 
   req.models.User.findOneAndUpdate({username: req.params.username},
     {$addToSet:{
-      watchList: req.body.movieId
+      watchList: req.body.movie
     }})
   .then((result) => {
     res.status(200).send()

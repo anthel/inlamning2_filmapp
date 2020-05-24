@@ -5,7 +5,7 @@ import CardComponent from './CardComponent'
 export default function WatchList() {
   return (
     <div className="wrapperWatchlist">
-      <CardComponent>
+      {/* <CardComponent>
         <h1>movie 1</h1>
       </CardComponent>
       <CardComponent>
@@ -28,7 +28,7 @@ export default function WatchList() {
       </CardComponent>
       <CardComponent>
         <h1>movie 8</h1>
-      </CardComponent>
+      </CardComponent> */}
     </div>
   )
 }

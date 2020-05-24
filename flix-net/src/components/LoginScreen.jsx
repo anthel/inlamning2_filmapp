@@ -28,13 +28,14 @@ const LoginScreen = (props) => {
 
   const login = e => {
     e.preventDefault();
-    fetch(`http://localhost:4000/users/${signInUser.userName}`,
+    fetch(`http://localhost:4000/users/${signInUser.username}`,
     {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(signInUser)
     })
     .then(res => {
+      console.log(signInUser)
       if(res.status === 202){
         // props.history.push('/WatchList')
         // props.saveUser(signInUser)
