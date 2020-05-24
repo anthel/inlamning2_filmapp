@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-router.get("/users", methods.getUsers);
+router.get("/users/:currentUser", methods.getCurrentUser);
 router.put("/users/:signInUser", methods.loginUser);
 router.post('/users', methods.createUser);
 router.patch('/users/:username', methods.saveMovieToUser)

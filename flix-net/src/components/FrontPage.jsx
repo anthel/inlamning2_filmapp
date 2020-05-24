@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import layer from '../svg/layer.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
-import withHttpRequests from '../hoc/withHttpRequest';
+import withHttpRequests from '../hoc/withHttpRequests';
 // import AddWatchListBtn from './AddWatchListBtn/AddWatchListBtn'
 
 

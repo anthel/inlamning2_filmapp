@@ -9,7 +9,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import withHttpRequests from '../hoc/withHttpRequest';
 
 
 import { useDispatch } from 'react-redux'

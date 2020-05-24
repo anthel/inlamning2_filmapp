@@ -19,6 +19,9 @@ export default function withHttpRequests(WrappedComponent) {
         body: JSON.stringify({movie})
       })
     }
+    getActiveUser = (username) => {
+      return fetch('http://localhost:4000/users/'+username)
+    }
 
      searchMovieTitle = e => {
       return fetch('http://localhost:4000/movies/?Title=' + e.target.value)
@@ -40,6 +43,7 @@ export default function withHttpRequests(WrappedComponent) {
         <WrappedComponent
           addToWatchlist={this.addToWatchlist}  
           searchMovieTitle={this.searchMovieTitle}
+          getActiveUser={this.getActiveUser}
           {...this.props}
         />
       )

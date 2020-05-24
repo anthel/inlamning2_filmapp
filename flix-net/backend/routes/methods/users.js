@@ -1,7 +1,7 @@
 // Methods available for handling users
 
-getUsers = (req, res, next) => {
-  req.models.User.find()
+getCurrentUser = (req, res, next) => {
+  req.models.User.findOne({username: req.params.currentUser})
     .then((result) => {
       return res.status(200).send(result);
     })
@@ -48,7 +48,7 @@ saveMovieToUser = (req, res, next) =>{
 }
 
 module.exports = {
-  getUsers,
+  getCurrentUser,
   createUser,
   loginUser,
   saveMovieToUser

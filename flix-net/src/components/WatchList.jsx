@@ -1,8 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import CardComponent from './CardComponent'
+import { useSelector} from 'react-redux';
+import withHttpRequests from '../hoc/withHttpRequests';
 
+function WatchList(props) {
 
-export default function WatchList() {
+  const user = useSelector(state => state.saveNewUserReducer)
+
+  const [watchlist, setWatchlist] = useState();
+
+    props.getActiveUser(user.username)
+    .then(res => res.json())
+    .then((activeUser) => {
+      if(!watchlist) {
+        setWatchlist(activeUser.watchList)
+      }
+    })
+
+  
   return (
     <div className="wrapperWatchlist">
       {/* <CardComponent>
@@ -32,3 +47,5 @@ export default function WatchList() {
     </div>
   )
 }
+
+export default withHttpRequests(WatchList);
