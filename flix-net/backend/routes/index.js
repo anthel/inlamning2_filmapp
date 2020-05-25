@@ -11,6 +11,7 @@ router.get("/users/:currentUser", methods.getCurrentUser);
 router.put("/users/:signInUser", methods.loginUser);
 router.post('/users', methods.createUser);
 router.patch('/users/:username', methods.saveMovieToUser)
+router.patch('/users/delete/:username', methods.removeMovieFromUser);
 
 router.get("/movies/carousel", methodsMovies.getMoviesForCarousel);
 router.get("/movies/moviesDb", methodsMovies.addMoviesToDb);

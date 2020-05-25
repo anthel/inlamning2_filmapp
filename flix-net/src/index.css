@@ -221,6 +221,16 @@ h1 {
 }
 
 
+.wrapperButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  /* margin-right: 100px;
+  margin-left: 100px; */
+}
+
+
+
 
 
 

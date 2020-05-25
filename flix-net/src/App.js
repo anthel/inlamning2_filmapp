@@ -5,6 +5,7 @@ import FrontPage from './components/FrontPage';
 import WatchList from './components/WatchList';
 import RenderMovies from './components/RenderMovies';
 import Nav from './components/Nav';
+import SearchMovies from './components/SearchMovies';
 
 
 import LoginScreen from './components/LoginScreen'
@@ -17,7 +18,7 @@ function App() {
         <Nav/>
         <Route path='/' exact   component={FrontPage}></Route>
         <Route path='/Watchlist'  component={WatchList}></Route>
-        <Route path='/Rendermovies'     component={RenderMovies}></Route>
+        <Route path='/SearchMovies'     component={SearchMovies}></Route>
         <Route path='/Login'     component={LoginScreen}></Route>
       </BrowserRouter>      
     </div>

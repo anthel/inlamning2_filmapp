@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Link} from 'react-router-dom';
 // import flixnet from '../svg/flixnet.svg';
 import logo from '../svg/logo2.svg';
 import StarIcon from '@material-ui/icons/Star';
@@ -9,10 +9,12 @@ import PersonIcon from '@material-ui/icons/Person';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import SearchMovies from './SearchMovies'
 
 
-import { useDispatch } from 'react-redux'
-import { movieResults } from '../Redux/Actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { movieResults, loggOut } from '../Redux/Actions'
+
 
 
 
@@ -71,20 +73,22 @@ function Nav(props) {
 
   const history = useHistory();
   const dispatch = useDispatch();
+  const loggedInUser = useSelector(state => state.saveNewUserReducer)
+  const {authenticated, username} = loggedInUser
+
+  console.log('loggedinuser.username=', loggedInUser.username)
+
+
 
   const searchMovieTitle = e => {
 
-    if(history.location.pathname!== '/Rendermovies'){
-      history.push('Rendermovies')
+    if(history.location.pathname!== '/SearchMovies'){
+      history.push('SearchMovies')
     }
     fetch('http://localhost:4000/movies/?Title=' + e.target.value)
       .then(res => res.json())
       .then(searchResult => dispatch(movieResults(searchResult)))
-
-      
-
   }
-  
 
   const frontPage = () => {
     history.push('/')
@@ -95,6 +99,7 @@ function Nav(props) {
   return (
     <div className="navBar">
       <img src={logo} className="logo" alt="logo" onClick={() => frontPage()}/>
+      {authenticated && <h2 style={{color: 'white'}}>{username}</h2>}
       <div className={classes.search}>
         <div className={classes.searchIcon}>
           <SearchIcon className={classes.searchIconInSearch}/>
@@ -111,8 +116,14 @@ function Nav(props) {
       </div>
       <div className="navLinks">
         <NavLink className="navLink" to='/Watchlist'><StarIcon className="navIcon"/>Watchlist</NavLink>
-        <NavLink className="navLink" to='/Rendermovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
-        <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink>
+        <NavLink className="navLink" to='/SearchMovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
+        {/* <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> */}
+
+        {!authenticated? <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
+        :   
+        //  <span onClick={()=>{loggOutUser()}} className="navLink"><PersonIcon  className="navIcon"/>Logout</span>} */}
+        <span onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</span>} */}
+
       </div>
     </div> 
   )
@@ -120,3 +131,5 @@ function Nav(props) {
 
 
 export default Nav;
+
+
