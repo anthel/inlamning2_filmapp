@@ -1,7 +1,6 @@
 const initialState = {
   username: '',
   authenticated: false,
-  
 };
 
 const saveNewUserReducer = (state=initialState, action) => {
@@ -16,7 +15,7 @@ const saveNewUserReducer = (state=initialState, action) => {
       return {
       ...state, 
       authenticated: false, 
-      username: null
+      username: ''
     };
     
     default: 

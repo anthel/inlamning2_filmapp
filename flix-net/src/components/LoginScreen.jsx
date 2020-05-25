@@ -40,7 +40,7 @@ const LoginScreen = (props) => {
         // props.history.push('/WatchList')
         // props.saveUser(signInUser)
         dispatch(loggIn(signInUser))
-        props.history.push('/WatchList')
+        props.history.push('/')
 
     } else {
       alert('fel!')}

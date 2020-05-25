@@ -19,6 +19,18 @@ export default function withHttpRequests(WrappedComponent) {
         body: JSON.stringify({movie})
       })
     }
+
+    removeFromWatchlist = (movie, user) =>{
+      console.log(movie)
+      fetch('http://localhost:4000/users/delete/' + `${user}`,{
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({movie})
+      })
+    }
+
     getActiveUser = (username) => {
       return fetch('http://localhost:4000/users/'+username)
     }
@@ -27,6 +39,10 @@ export default function withHttpRequests(WrappedComponent) {
       return fetch('http://localhost:4000/movies/?Title=' + e.target.value)
         .then(res => res.json())
         .then(searchResult => searchResult)
+    }
+    getCarousel = () => {
+      return fetch('http://localhost:4000/movies/carousel')
+      .then(res => res.json())
     }
     
     
@@ -44,6 +60,8 @@ export default function withHttpRequests(WrappedComponent) {
           addToWatchlist={this.addToWatchlist}  
           searchMovieTitle={this.searchMovieTitle}
           getActiveUser={this.getActiveUser}
+          getCarousel={this.getCarousel}
+          removeFromWatchlist={this.removeFromWatchlist}
           {...this.props}
         />
       )

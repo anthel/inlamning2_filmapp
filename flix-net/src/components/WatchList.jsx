@@ -1,51 +1,45 @@
 import React, {useState, useEffect} from 'react'
-import CardComponent from './CardComponent'
 import { useSelector} from 'react-redux';
 import withHttpRequests from '../hoc/withHttpRequests';
+import RenderMovies from './RenderMovies'
 
 function WatchList(props) {
 
   const user = useSelector(state => state.saveNewUserReducer)
+  const [watchlist, setWatchlist] = useState([]);
 
-  const [watchlist, setWatchlist] = useState();
 
-    props.getActiveUser(user.username)
+useEffect(()=>{
+  if(user.authenticated === true) {
+      props.getActiveUser(user.username)
+    
     .then(res => res.json())
     .then((activeUser) => {
-      if(!watchlist) {
         setWatchlist(activeUser.watchList)
-      }
     })
+  }
+  },[])
+    
 
-  
-  return (
-    <div className="wrapperWatchlist">
-      {/* <CardComponent>
-        <h1>movie 1</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 2</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 3</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 4</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 5</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 6</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 7</h1>
-      </CardComponent>
-      <CardComponent>
-        <h1>movie 8</h1>
-      </CardComponent> */}
+  if(user.authenticated && watchlist.length > 0 ) {
+    return (
+      <div className="wrapperWatchlist">
+        <RenderMovies movies={watchlist}/>
+      </div>
+    )
+  }
+
+  else {
+    return (
+      <div className="wrapperWatchlist">
+        {user.authenticated ? 
+        <h1 style={{color: 'white'}}>You dont have any saved movies.</h1>
+        :
+        <h1 style={{color: 'white'}}>Login to see your watchlist.</h1> 
+        }
     </div>
-  )
+    )
+  }
 }
 
 export default withHttpRequests(WatchList);

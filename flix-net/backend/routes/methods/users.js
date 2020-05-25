@@ -32,15 +32,27 @@ loginUser = (req, res, next) => {
 }
 
 saveMovieToUser = (req, res, next) =>{
-  console.log('runs')
-  console.log(req.body.movie)
-  console.log(req.params.username)
-
   req.models.User.findOneAndUpdate({username: req.params.username},
     {$addToSet:{
       watchList: req.body.movie
     }})
   .then((result) => {
+    console.log(result)
+    res.status(200).send()
+  }).catch((error) => {
+    next(error);
+  })
+}
+
+removeMovieFromUser =(req, res, next) =>{
+  req.models.User.findOneAndUpdate({username: req.params.username},
+
+    {$pull:{
+      watchList: req.body.movie
+    }})
+
+  .then((result) => {
+    console.log(result)
     res.status(200).send()
   }).catch((error) => {
     next(error);
@@ -51,7 +63,8 @@ module.exports = {
   getCurrentUser,
   createUser,
   loginUser,
-  saveMovieToUser
+  saveMovieToUser,
+  removeMovieFromUser
 };
 
 
