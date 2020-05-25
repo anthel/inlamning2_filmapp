@@ -9,7 +9,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import withHttpRequests from '../hoc/withHttpRequest';
 
 
 import { useDispatch } from 'react-redux'
@@ -65,7 +64,7 @@ const useStyles = makeStyles((theme) =>
         },
       },
     },
-  }),
+  }), 
 );
 
 function Nav(props) {
@@ -74,7 +73,11 @@ function Nav(props) {
   const dispatch = useDispatch();
 
   const searchMovieTitle = e => {
-      fetch('http://localhost:4000/movies/?Title=' + e.target.value)
+
+    if(history.location.pathname!== '/Rendermovies'){
+      history.push('Rendermovies')
+    }
+    fetch('http://localhost:4000/movies/?Title=' + e.target.value)
       .then(res => res.json())
       .then(searchResult => dispatch(movieResults(searchResult)))
 

@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "mocha ./tests --recursive | exit 0",
     "eject": "react-scripts eject",
-    "backend": "nodemon ./backend/index.js"
+    "backend": "nodemon ./backend/index.js && curl localhost:4000/movies/moviesDb"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
