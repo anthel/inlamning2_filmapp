@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   watchList: {
     type: Array
   }
+ 
 });
 
 const User = mongoose.model('User', userSchema);

@@ -20,7 +20,7 @@ export default class CardComponent extends Component {
   hideInfo = () => {
     this.setState({ showInfo: false })
   }
-
+//src={this.props.movie.Poster}
   render() {
     return (
       <div className="movie-card" onMouseEnter={this.showMoreInfo} onMouseLeave={this.hideInfo}>

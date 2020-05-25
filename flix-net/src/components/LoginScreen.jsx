@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import Login from './Login';
-import SignUp from './SignUp'
+import SignUp from './SignUp';
+import withHttpRequest from '../hoc/withHttpRequest';
+import { useDispatch, useSelector } from 'react-redux';
+import { loggIn, saveNewUser } from '../Redux/Actions';
+
 
 const LoginScreen = (props) => {
 
@@ -10,6 +14,9 @@ const LoginScreen = (props) => {
     username:'',
     password:''
   });
+
+  const dispatch = useDispatch();
+  // const usersRedux = useSelector(state => state.saveNewUserReducer)
 
   const handleInputToNewUser = e =>{
     setNewUser({...newUser, [e.target.name]: e.target.value});
@@ -23,18 +30,27 @@ const LoginScreen = (props) => {
     e.preventDefault();
     fetch(`http://localhost:4000/users/${signInUser.userName}`,
     {
-      method: 'put',   
+      method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(signInUser)
     })
-    .then(res => res.status === 202 ?  props.history.push('/Watchlist') : alert('fel!'))
+    .then(res => {
+      if(res.status === 202){
+        // props.history.push('/WatchList')
+        // props.saveUser(signInUser)
+        dispatch(loggIn(signInUser))
+        props.history.push('/WatchList')
+
+    } else {
+      alert('fel!')}
+    })
     }
-    
+
   const signUp = e => {
     e.preventDefault();
-    fetch('http://localhost:4000/users', 
+    fetch('http://localhost:4000/users',
     {
-      method: 'post',   
+      method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newUser)
     })
@@ -51,13 +67,13 @@ const LoginScreen = (props) => {
 
     return (
       <div id="logginWrapper">
-        {!showSignUp ? 
-        <Login login={e=>{login(e)}} handleSignInUser={e=>{handleSignInUser(e)}} toggeleSignUp={toggeleSignUp} /> 
-        : 
+        {!showSignUp ?
+        <Login login={e=>{login(e)}} handleSignInUser={e=>{handleSignInUser(e)}} toggeleSignUp={toggeleSignUp} />
+        :
         <SignUp signUp={e=>{signUp(e)}} handleInputToNewUser={e=>{handleInputToNewUser(e)}} toggeleSignUp={toggeleSignUp} />}
       </div>
       )
 
 }
 
-export default LoginScreen;
+export default withHttpRequest(LoginScreen);

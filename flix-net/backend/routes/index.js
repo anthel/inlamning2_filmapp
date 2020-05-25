@@ -10,9 +10,10 @@ const router = express.Router();
 router.get("/users", methods.getUsers);
 router.put("/users/:signInUser", methods.loginUser);
 router.post('/users', methods.createUser);
+router.patch('/users/:username', methods.saveMovieToUser)
 
 router.get("/movies/carousel", methodsMovies.getMoviesForCarousel);
-router.get("/movies", methodsMovies.addMoviesToDb)
-
+router.get("/movies/moviesDb", methodsMovies.addMoviesToDb);
+router.get("/movies", methodsMovies.getMovies);
 
 module.exports = router;
