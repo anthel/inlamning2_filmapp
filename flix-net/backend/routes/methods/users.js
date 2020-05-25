@@ -1,7 +1,7 @@
 // Methods available for handling users
 
-getUsers = (req, res, next) => {
-  req.models.User.find()
+getCurrentUser = (req, res, next) => {
+  req.models.User.findOne({username: req.params.currentUser})
     .then((result) => {
       return res.status(200).send(result);
     })
@@ -33,12 +33,12 @@ loginUser = (req, res, next) => {
 
 saveMovieToUser = (req, res, next) =>{
   console.log('runs')
-  console.log(req.body.movieId)
+  console.log(req.body.movie)
   console.log(req.params.username)
 
   req.models.User.findOneAndUpdate({username: req.params.username},
     {$addToSet:{
-      watchList: req.body.movieId
+      watchList: req.body.movie
     }})
   .then((result) => {
     res.status(200).send()
@@ -48,7 +48,7 @@ saveMovieToUser = (req, res, next) =>{
 }
 
 module.exports = {
-  getUsers,
+  getCurrentUser,
   createUser,
   loginUser,
   saveMovieToUser
