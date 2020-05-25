@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) =>
         },
       },
     },
-  }),
+  }), 
 );
 
 function Nav(props) {
@@ -73,7 +73,11 @@ function Nav(props) {
   const dispatch = useDispatch();
 
   const searchMovieTitle = e => {
-      fetch('http://localhost:4000/movies/?Title=' + e.target.value)
+
+    if(history.location.pathname!== '/Rendermovies'){
+      history.push('Rendermovies')
+    }
+    fetch('http://localhost:4000/movies/?Title=' + e.target.value)
       .then(res => res.json())
       .then(searchResult => dispatch(movieResults(searchResult)))
 
