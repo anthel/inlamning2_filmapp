@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
+import withHttpRequests from '../hoc/withHttpRequests'
 
-export default class CardComponent extends Component {
+import Button from '@material-ui/core/Button';
+
+class CardComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showInfo: false
+      showInfo: false,
+      addbtn: {
+        backgroundColor: '#009688',
+        fontSize: '11px',
+      }
     }
 
     this.onHoverCard = {
@@ -19,6 +26,10 @@ export default class CardComponent extends Component {
 
   hideInfo = () => {
     this.setState({ showInfo: false })
+  }
+
+  addToWatchlist = (movie) =>{
+    this.props.addToWatchlist(movie, this.props.usersRedux.username)
   }
 //src={this.props.movie.Poster}
   render() {
@@ -36,6 +47,7 @@ export default class CardComponent extends Component {
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>
+            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>
           </div>
         </div>
         }
@@ -43,3 +55,5 @@ export default class CardComponent extends Component {
     )
   }
 }
+
+export default withHttpRequests(CardComponent)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory, Link} from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 // import flixnet from '../svg/flixnet.svg';
 import logo from '../svg/logo2.svg';
 import StarIcon from '@material-ui/icons/Star';
@@ -9,7 +9,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import SearchMovies from './SearchMovies'
 
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -76,7 +75,6 @@ function Nav(props) {
   const loggedInUser = useSelector(state => state.saveNewUserReducer)
   const {authenticated, username} = loggedInUser
 
-  console.log('loggedinuser.username=', loggedInUser.username)
 
 
 

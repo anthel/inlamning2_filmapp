@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector} from 'react-redux';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
-import layer from '../svg/layer.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import withHttpRequests from '../hoc/withHttpRequests';
@@ -40,7 +39,6 @@ function FrontPage(props) {
 
   
     const [movies, setMovies] = useState([]);
-    const [watchList, setWatchList] = useState([]);
 
     const usersRedux = useSelector(state => state.saveNewUserReducer)
 
