@@ -52,8 +52,10 @@ class CardComponent extends Component {
 
         {this.state.showInfo === true &&
         <div className="movie-information" key={this.props.movie._id}>
-          <h1>{this.props.movie.Title}</h1>
-          <h3>Plot:<br /> {this.props.movie.Plot}</h3>
+          <div>
+            <h1>{this.props.movie.Title}</h1>
+            <h3>Plot:<br /> {this.props.movie.Plot}</h3>
+          </div>
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>

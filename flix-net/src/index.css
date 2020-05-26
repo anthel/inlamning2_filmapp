@@ -88,11 +88,15 @@ h1 {
   border: 1px solid red;
   margin: 20px;
   height: 450px;
+  width: 293.99px;
   position: relative;
 }
 
 .movie-card-image > img {
-  max-height: 100%;
+  min-height: 440px;
+  max-height: 448px;
+  height: 100%;
+  min-width: 100%;
   max-width: 100%;
 }
 
@@ -102,6 +106,7 @@ h1 {
   flex-direction: column;
   top: 10px;
   padding: 15px;
+  height: 420px;
 }
 
 .movie-information h1, .movie-information h3, .movie-information h4 {
@@ -118,7 +123,7 @@ h1 {
 
 .genre-cast-bar {
   position: absolute;
-  top: 100%;
+  bottom: 0;
 }
 
 /* CAROUSEL */
