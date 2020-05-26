@@ -47,7 +47,9 @@ class CardComponent extends Component {
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>
-            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>
+            {this.props.showRemove ? 
+            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button> : null}
+            
           </div>
         </div>
         }
