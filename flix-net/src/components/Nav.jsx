@@ -120,7 +120,7 @@ function Nav(props) {
         {!authenticated? <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
         :   
         //  <span onClick={()=>{loggOutUser()}} className="navLink"><PersonIcon  className="navIcon"/>Logout</span>} */}
-        <span onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</span>} */}
+        <NavLink to="/Login" onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</NavLink>} 
 
       </div>
     </div> 

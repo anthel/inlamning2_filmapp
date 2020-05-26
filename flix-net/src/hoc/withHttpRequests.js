@@ -3,10 +3,9 @@ import React, { Component } from 'react';
  
 export default function withHttpRequests(WrappedComponent) {
   return class extends Component {
-
+  
     addToWatchlist = (movie, user) =>{
-      console.log(movie)
-      fetch('http://localhost:4000/users/' + `${user}`,{
+      return fetch('http://localhost:4000/users/' + user,{
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +16,7 @@ export default function withHttpRequests(WrappedComponent) {
 
     removeFromWatchlist = (movie, user) =>{
       console.log(movie)
-      fetch('http://localhost:4000/users/delete/' + `${user}`,{
+      return fetch('http://localhost:4000/users/delete/' + user,{
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +29,7 @@ export default function withHttpRequests(WrappedComponent) {
       return fetch('http://localhost:4000/users/'+username)
     }
 
-     searchMovieTitle = e => {
+    searchMovieTitle = e => {
       return fetch('http://localhost:4000/movies/?Title=' + e.target.value)
         .then(res => res.json())
         .then(searchResult => searchResult)
@@ -44,10 +43,6 @@ export default function withHttpRequests(WrappedComponent) {
     mapStateToProps = (state, ownProps) => ({
       user: state.saveNewUserReducer.username,
     })
-
-
-
-
 
     render() {
       return (
