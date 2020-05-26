@@ -7,6 +7,9 @@ import Button from '@material-ui/core/Button';
 import withHttpRequests from '../hoc/withHttpRequests';
 import { makeStyles } from '@material-ui/core/styles';
 
+import useSound from 'use-sound';
+import clickSound from './sounds/waterbead.wav';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +44,12 @@ function FrontPage(props) {
   const [update, setUpdate] = useState(false);
 
   const usersRedux = useSelector(state => state.saveNewUserReducer)
+
+  const [playSound] = useSound(clickSound);
   
   useEffect(()=>{
+    props.getCarousel()
+    .then(movie => setMovies(movie));
     if(usersRedux.authenticated === true) {
       props.getActiveUser(usersRedux.username)
       
@@ -54,27 +61,25 @@ function FrontPage(props) {
     }
     }, [update])
 
-  props.getCarousel()
-    .then(movie => setMovies(movie));
-
   const LinkToYouTube = (title) => {
+    playSound();
     window.open("https://www.youtube.com/results?search_query="+ `trailer ${title}`); 
   }
 
   const addToWatchlist = (movie, add) =>{
+    playSound();
     props.addToWatchlist(movie, usersRedux.username)
-    .then((response)=>{
-      setUpdate(!add)
-  
+      .then((response)=>{
+        setUpdate(!add)
       })
   }
   const removeFromWatchlist = (movie, remove) =>{
 
+    playSound();
     props.removeFromWatchlist(movie, usersRedux.username)
-    .then((response)=>{
-    setUpdate(!remove)
-
-    })
+      .then(()=>{
+        setUpdate(!remove)
+      })
   }
 
     return (
@@ -88,8 +93,7 @@ function FrontPage(props) {
               <div key={movie._id}>
                 <div className="browserPosterWrapper">
 
-                    <img className="browserPoster" alt="poster" src={movie.Poster}/>
-                  
+                  <img className="browserPoster" alt="poster" src={movie.Poster}/>
                   <div className="browserInfo">
                     <h1 className="headerTitle">{movie.Title}</h1>
                     <p className="plot">"{movie.Plot}"</p>
@@ -111,10 +115,8 @@ function FrontPage(props) {
                         : null
                         }
                       </div>
-                      
                     </div>
                   </div>
-
                 </div>
               </div>
           )})

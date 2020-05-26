@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CardComponent from './CardComponent';
 
+
+export default function RenderMovies(props) {
+
 import { useSelector } from 'react-redux';
 import withHttpRequests from '../hoc/withHttpRequests';
 
@@ -19,7 +22,6 @@ function RenderMovies(props) {
       })
     }
   }, [props.update])
-
 
 
   return (

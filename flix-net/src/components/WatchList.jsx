@@ -3,6 +3,7 @@ import { useSelector} from 'react-redux';
 import withHttpRequests from '../hoc/withHttpRequests';
 import RenderMovies from './RenderMovies'
 
+
 function WatchList(props) {
 
   const user = useSelector(state => state.saveNewUserReducer)
