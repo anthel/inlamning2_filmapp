@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Login from './Login';
 import SignUp from './SignUp';
 import withHttpRequest from '../hoc/withHttpRequests';
-import { useDispatch, useSelector } from 'react-redux';
-import { loggIn, saveNewUser } from '../Redux/Actions';
+import { useDispatch } from 'react-redux';
+import { loggIn } from '../Redux/Actions';
 
 
 const LoginScreen = (props) => {

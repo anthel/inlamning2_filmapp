@@ -3,7 +3,6 @@ import { BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import FrontPage from './components/FrontPage';
 import WatchList from './components/WatchList';
-import RenderMovies from './components/RenderMovies';
 import Nav from './components/Nav';
 import SearchMovies from './components/SearchMovies';
 

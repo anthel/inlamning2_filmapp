@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector} from 'react-redux';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
@@ -6,7 +6,6 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import withHttpRequests from '../hoc/withHttpRequests';
 import { makeStyles } from '@material-ui/core/styles';
-import useForceUpdate from 'use-force-update';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,7 +52,7 @@ function FrontPage(props) {
           setWatchList(activeUser.watchList)
       })
     }
-    },[update])
+    }, [update])
 
   props.getCarousel()
     .then(movie => setMovies(movie));

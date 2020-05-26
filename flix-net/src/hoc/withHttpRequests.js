@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 export default function withHttpRequests(WrappedComponent) {
   return class extends Component {
   
-
     addToWatchlist = (movie, user) =>{
       return fetch('http://localhost:4000/users/' + user,{
         method: 'PATCH',
