@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector} from 'react-redux';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
@@ -52,7 +52,7 @@ function FrontPage(props) {
           setWatchList(activeUser.watchList)
       })
     }
-    },[update])
+    }, [update])
 
   props.getCarousel()
     .then(movie => setMovies(movie));

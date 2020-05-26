@@ -11,7 +11,7 @@ class CardComponent extends Component {
       addbtn: {
         backgroundColor: '#009688',
         fontSize: '11px',
-      }
+      },
     }
 
     this.onHoverCard = {
@@ -30,8 +30,18 @@ class CardComponent extends Component {
 
   addToWatchlist = (movie) =>{
     this.props.addToWatchlist(movie, this.props.usersRedux.username)
+    .then( () => {
+      this.props.changeUpdateState()
+    })
   }
-//src={this.props.movie.Poster}
+
+  removeFromWatchlist = (movie) => {
+    this.props.removeFromWatchlist(movie, this.props.usersRedux.username)
+    .then( () => {
+      this.props.changeUpdateState()
+    })
+  }
+  
   render() {
     return (
       <div className="movie-card" onMouseEnter={this.showMoreInfo} onMouseLeave={this.hideInfo}>
@@ -47,8 +57,10 @@ class CardComponent extends Component {
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>
-            {this.props.showRemove ? 
-            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button> : null}
+            {this.props.showRemove ?
+            <Button variant="contained" onClick={() => this.removeFromWatchlist(this.props.movie)}>Remove from Watchlist</Button>
+            : 
+            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>}
             
           </div>
         </div>
