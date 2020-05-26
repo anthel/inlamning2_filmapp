@@ -55,7 +55,6 @@ function FrontPage(props) {
       
       .then(res => res.json())
       .then((activeUser) => {
-        console.log(activeUser)
           setWatchList(activeUser.watchList)
       })
     }
@@ -63,7 +62,7 @@ function FrontPage(props) {
 
   const LinkToYouTube = (title) => {
     playSound();
-    window.open("https://www.youtube.com/results?search_query="+ `trailer ${title}`); 
+    window.open(`https://www.youtube.com/results?search_query=${title} trailer`); 
   }
 
   const addToWatchlist = (movie, add) =>{

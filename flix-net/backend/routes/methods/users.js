@@ -36,8 +36,7 @@ saveMovieToUser = (req, res, next) =>{
     {$addToSet:{
       watchList: req.body.movie
     }})
-  .then((result) => {
-    console.log(result)
+  .then(() => {
     res.status(200).send()
   }).catch((error) => {
     next(error);
@@ -51,8 +50,7 @@ removeMovieFromUser =(req, res, next) =>{
       watchList: req.body.movie
     }})
 
-  .then((result) => {
-    console.log(result)
+  .then(() => {
     res.status(200).send()
   }).catch((error) => {
     next(error);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-// import flixnet from '../svg/flixnet.svg';
+
 import logo from '../svg/logo2.svg';
 import StarIcon from '@material-ui/icons/Star';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) =>
   }), 
 );
 
-function Nav(props) {
+export default function Nav() {
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -115,11 +115,9 @@ function Nav(props) {
       <div className="navLinks">
         <NavLink className="navLink" to='/Watchlist'><StarIcon className="navIcon"/>Watchlist</NavLink>
         <NavLink className="navLink" to='/SearchMovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
-        {/* <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> */}
-
-        {!authenticated? <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
+        {!authenticated ? 
+        <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
         :   
-        //  <span onClick={()=>{loggOutUser()}} className="navLink"><PersonIcon  className="navIcon"/>Logout</span>} */}
         <NavLink to="/Login" onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</NavLink>} 
 
       </div>
@@ -127,7 +125,5 @@ function Nav(props) {
   )
 }
 
-
-export default Nav;
 
 

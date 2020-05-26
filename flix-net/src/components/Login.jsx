@@ -8,7 +8,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import logo from '../SVG/logo5.svg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,16 +28,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  input: {
-    // color: 'white',
-  },
   linkText: {
     color: 'lightgrey',
     fontSize: '1.2em',
     cursor: 'pointer'
-  },
-  cssLabel: {
-    // color: 'white'
   },
   cssFocused: {
   },
@@ -49,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
   },
   notchedOutline: {
     borderWidth: '1px',
-    // borderColor: 'white !important'
   } ,
   errorMSG: {
     color: 'red',
@@ -102,7 +94,6 @@ function LoginScreen(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <img src={logo} className={classes.logo}/> */}
         <Typography component="h1" variant="h5">Sign in</Typography>
 
         <form className={classes.form} onSubmit={e=>{props.login(e)}} >

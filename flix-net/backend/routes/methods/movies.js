@@ -20,7 +20,6 @@ getMovies = (req, res, next) =>{
   .then(allMovies => {
     if (req.query.Title){
       const matchingMovies = allMovies.filter(movie => movie.Title.toLowerCase().startsWith(req.query.Title) || movie.Title.toUpperCase().startsWith(req.query.Title ))
-      console.log(matchingMovies) 
        res.send(matchingMovies)
     } else {
       res.send([]);
@@ -49,5 +48,4 @@ module.exports = {
   addMoviesToDb,
   getMoviesForCarousel,
   getMovies,
-  
 };

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import logo from '../SVG/logo5.svg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
    * @param props - toggeleSignUp() for displaying this component or the Logincomponent. 
    * @returns JSX - the signupform.
    */
-function SignUp(props) {
+  export default function SignUp(props) {
   
   const classes = useStyles();
 
@@ -101,7 +100,6 @@ function SignUp(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <img src={logo} className={classes.logo}/> */}
         <Typography component="h1" variant="h5">Sign up</Typography>
 
         <form className={classes.form} onSubmit={(e)=>{props.signUp(e)}} >
@@ -292,4 +290,3 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;

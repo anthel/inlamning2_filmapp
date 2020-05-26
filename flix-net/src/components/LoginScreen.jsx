@@ -16,7 +16,6 @@ const LoginScreen = (props) => {
   });
 
   const dispatch = useDispatch();
-  // const usersRedux = useSelector(state => state.saveNewUserReducer)
 
   const handleInputToNewUser = e =>{
     setNewUser({...newUser, [e.target.name]: e.target.value});
@@ -35,10 +34,7 @@ const LoginScreen = (props) => {
       body: JSON.stringify(signInUser)
     })
     .then(res => {
-      console.log(signInUser)
       if(res.status === 202){
-        // props.history.push('/WatchList')
-        // props.saveUser(signInUser)
         dispatch(loggIn(signInUser))
         props.history.push('/')
 
@@ -56,7 +52,7 @@ const LoginScreen = (props) => {
       body: JSON.stringify(newUser)
     })
     .then(info => info.json())
-    .then(data => {
+    .then(() => {
       setNewUser({});
       toggeleSignUp();
     })

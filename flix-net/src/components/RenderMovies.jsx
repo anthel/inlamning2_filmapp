@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import CardComponent from './CardComponent';
 
-
-export default function RenderMovies(props) {
-
 import { useSelector } from 'react-redux';
 import withHttpRequests from '../hoc/withHttpRequests';
+
 
 function RenderMovies(props) {
   const [watchList, setWatchList] = useState([]);
   const usersRedux = useSelector(state => state.saveNewUserReducer)
 
   useEffect(()=>{
-    console.log(props.update)
     if(usersRedux.authenticated === true) {
       props.getActiveUser(usersRedux.username)
       .then(res => res.json())
       .then((activeUser) => {
-        console.log(activeUser)
           setWatchList(activeUser.watchList)
       })
     }

@@ -15,7 +15,6 @@ export default function withHttpRequests(WrappedComponent) {
     }
 
     removeFromWatchlist = (movie, user) =>{
-      console.log(movie)
       return fetch('http://localhost:4000/users/delete/' + user,{
         method: 'PATCH',
         headers: {
@@ -39,11 +38,6 @@ export default function withHttpRequests(WrappedComponent) {
       .then(res => res.json())
     }
     
-    
-    mapStateToProps = (state, ownProps) => ({
-      user: state.saveNewUserReducer.username,
-    })
-
     render() {
       return (
         <WrappedComponent

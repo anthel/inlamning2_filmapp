@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-
+/* 
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown'; */
+
 import withHttpRequests from '../hoc/withHttpRequests'
-
-
 import Button from '@material-ui/core/Button';
 
 class CardComponent extends Component {
