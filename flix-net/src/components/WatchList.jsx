@@ -8,7 +8,11 @@ function WatchList(props) {
 
   const user = useSelector(state => state.saveNewUserReducer)
   const [watchlist, setWatchlist] = useState([]);
+  const [update, setUpdate] = useState(false);
 
+  const changeUpdateState = () => {
+    setUpdate(!update)
+  }
 
 useEffect(()=>{
   if(user.authenticated === true) {
@@ -19,13 +23,12 @@ useEffect(()=>{
         setWatchlist(activeUser.watchList)
     })
   }
-  },[])
-    
+  },[update])
 
   if(user.authenticated && watchlist.length > 0 ) {
     return (
       <div className="wrapperWatchlist">
-        <RenderMovies movies={watchlist}/>
+        <RenderMovies movies={watchlist} changeUpdateState={changeUpdateState} usersRedux={user}/>
       </div>
     )
   }

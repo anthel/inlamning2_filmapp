@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector} from 'react-redux';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
@@ -6,6 +6,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import withHttpRequests from '../hoc/withHttpRequests';
 import { makeStyles } from '@material-ui/core/styles';
+
 import useSound from 'use-sound';
 import clickSound from './sounds/waterbead.wav';
 
@@ -58,7 +59,7 @@ function FrontPage(props) {
           setWatchList(activeUser.watchList)
       })
     }
-    },[update])
+    }, [update])
 
   const LinkToYouTube = (title) => {
     playSound();

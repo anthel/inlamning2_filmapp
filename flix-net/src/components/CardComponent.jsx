@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
+
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import withHttpRequests from '../hoc/withHttpRequests'
 
-export default class CardComponent extends Component {
+
+import Button from '@material-ui/core/Button';
+
+class CardComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showInfo: false
+      showInfo: false,
+      addbtn: {
+        backgroundColor: '#009688',
+        fontSize: '11px',
+      },
     }
 
     this.onHoverCard = {
@@ -22,7 +31,21 @@ export default class CardComponent extends Component {
   hideInfo = () => {
     this.setState({ showInfo: false })
   }
-//src={this.props.movie.Poster}
+
+  addToWatchlist = (movie) =>{
+    this.props.addToWatchlist(movie, this.props.usersRedux.username)
+    .then( () => {
+      this.props.changeUpdateState()
+    })
+  }
+
+  removeFromWatchlist = (movie) => {
+    this.props.removeFromWatchlist(movie, this.props.usersRedux.username)
+    .then( () => {
+      this.props.changeUpdateState()
+    })
+  }
+  
   render() {
     return (
       <div className="movie-card" onMouseEnter={this.showMoreInfo} onMouseLeave={this.hideInfo}>
@@ -38,10 +61,17 @@ export default class CardComponent extends Component {
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>
+
             {/* <div id="thumbContainer">
               <ThumbUpIcon style={{fontSize:"6em", color: "white"}}/>
               <ThumbDownIcon style={{fontSize:"6em", color: "white"}}/>
             </div> */}
+
+            {this.props.showRemove ?
+            <Button variant="contained" onClick={() => this.removeFromWatchlist(this.props.movie)}>Remove from Watchlist</Button>
+            : 
+            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>}
+            
           </div>
         </div>
         }
@@ -49,3 +79,5 @@ export default class CardComponent extends Component {
     )
   }
 }
+
+export default withHttpRequests(CardComponent)
