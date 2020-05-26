@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector} from 'react-redux';
 import CardComponent from './CardComponent';
 
+
 export default function RenderMovies(props) {
 
   return (

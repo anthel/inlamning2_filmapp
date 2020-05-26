@@ -135,9 +135,6 @@ h1 {
   background: linear-gradient(281deg, rgba(0,0,0,1) 0%, rgba(35,37,43,1) 100%);  */
 }
 
-.ant-carousel .slick-slide h3 {
-  /* color: #fff; */
-}
 
 .slick-slide {
   margin: 0;
@@ -227,6 +224,18 @@ h1 {
   /* width: 50%; */
   /* margin-right: 100px;
   margin-left: 100px; */
+}
+
+#thumbContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 20;
+  padding: 15px;
+/*   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end; */
 }
 
 

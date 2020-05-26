@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 export default class CardComponent extends Component {
   constructor(props) {
@@ -36,6 +38,10 @@ export default class CardComponent extends Component {
           <div className="genre-cast-bar">
             <h4>Genre: {this.props.movie.Genre}</h4>
             <h4>Cast: {this.props.movie.Actors}</h4>
+            {/* <div id="thumbContainer">
+              <ThumbUpIcon style={{fontSize:"6em", color: "white"}}/>
+              <ThumbDownIcon style={{fontSize:"6em", color: "white"}}/>
+            </div> */}
           </div>
         </div>
         }

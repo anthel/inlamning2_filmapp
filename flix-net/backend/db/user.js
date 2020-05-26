@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: { // TODO: validator
+  email: { 
     type: String,
     required: true,
   },
