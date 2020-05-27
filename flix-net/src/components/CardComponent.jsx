@@ -44,8 +44,11 @@ class CardComponent extends Component {
       this.props.changeUpdateState()
     })
   }
+
   
   render() {
+
+
     return (
       <div className="movie-card" onMouseEnter={this.showMoreInfo} onMouseLeave={this.hideInfo}>
 
@@ -54,25 +57,32 @@ class CardComponent extends Component {
         </div>
 
         {this.state.showInfo === true &&
-        <div className="movie-information" key={this.props.movie._id}>
-          <div>
-            <h1>{this.props.movie.Title}</h1>
-            <h3>Plot:<br /> {this.props.movie.Plot}</h3>
-          </div>
-          <div className="genre-cast-bar">
-            <h4>Genre: {this.props.movie.Genre}</h4>
-            <h4>Cast: {this.props.movie.Actors}</h4>
+        <div className="cardWrapper">
+          <div className="movie-information" key={this.props.movie._id}>
+            <div>
+              <h1>{this.props.movie.Title}</h1>
+              <h3>Plot:<br /> {this.props.movie.Plot}</h3>
+            </div>
+            <div className="genre-cast-bar">
+              <h4>Genre: {this.props.movie.Genre}</h4>
+              <h4>Cast: {this.props.movie.Actors}</h4>
+              {this.props.usersRedux.authenticated ? 
+                <>
+                {this.props.showRemove ?
+                  <Button variant="contained" onClick={() => this.removeFromWatchlist(this.props.movie)}>Remove from Watchlist</Button>
+                  : 
+                  <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>}}
+                </> : null
+              }
+
 
             {/* <div id="thumbContainer">
               <ThumbUpIcon style={{fontSize:"6em", color: "white"}}/>
               <ThumbDownIcon style={{fontSize:"6em", color: "white"}}/>
             </div> */}
 
-            {this.props.showRemove ?
-            <Button variant="contained" onClick={() => this.removeFromWatchlist(this.props.movie)}>Remove from Watchlist</Button>
-            : 
-            <Button variant="contained" onClick={() => this.addToWatchlist(this.props.movie)}>Add To Watchlist</Button>}
-            
+     
+            </div>
           </div>
         </div>
         }

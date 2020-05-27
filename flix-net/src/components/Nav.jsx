@@ -13,7 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { movieResults, loggOut } from '../Redux/Actions'
-
+import withHttpRequests from '../hoc/withHttpRequests'
 
 
 
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) =>
   }), 
 );
 
-export default function Nav() {
+  function Nav(props) {
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -76,16 +76,12 @@ export default function Nav() {
   const {authenticated, username} = loggedInUser
 
 
-
-
   const searchMovieTitle = e => {
-
     if(history.location.pathname!== '/SearchMovies'){
       history.push('SearchMovies')
     }
-    fetch('http://localhost:4000/movies/?Title=' + e.target.value)
-      .then(res => res.json())
-      .then(searchResult => dispatch(movieResults(searchResult)))
+    props.searchMovieTitle(e)
+    .then(searchResult => dispatch(movieResults(searchResult)))
   }
 
   const frontPage = () => {
@@ -127,3 +123,4 @@ export default function Nav() {
 
 
 
+export default withHttpRequests(Nav);
