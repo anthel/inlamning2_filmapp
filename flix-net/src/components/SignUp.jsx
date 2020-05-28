@@ -58,14 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-  /**
-   * @description holds the signupform and has logic for validation and feedback if something is incorrect.
-   * @param props - handleInputToNewUser() sends inputvalues to state in LoginScreencomponent.
-   * @param props - signUp() signs up a new user. Adds it to the users array.
-   * @param props - toggeleSignUp() for displaying this component or the Logincomponent. 
-   * @returns JSX - the signupform.
-   */
-  export default function SignUp(props) {
+  function SignUp(props) {
   
   const classes = useStyles();
 
@@ -290,3 +283,4 @@ const useStyles = makeStyles((theme) => ({
   );
 }
 
+export default SignUp;

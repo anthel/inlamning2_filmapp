@@ -16,6 +16,7 @@ const LoginScreen = (props) => {
   });
 
   const dispatch = useDispatch();
+  const toggeleSignUp = () => setShowSignUp(!showSignUp);
 
   const handleInputToNewUser = e =>{
     setNewUser({...newUser, [e.target.name]: e.target.value});
@@ -58,16 +59,13 @@ const LoginScreen = (props) => {
     })
   }
 
-  const toggeleSignUp = () => {
-    setShowSignUp(!showSignUp)
-  }
-
     return (
       <div id="logginWrapper">
-        {!showSignUp ?
-        <Login login={e=>{login(e)}} handleSignInUser={e=>{handleSignInUser(e)}} toggeleSignUp={toggeleSignUp} />
-        :
-        <SignUp signUp={e=>{signUp(e)}} handleInputToNewUser={e=>{handleInputToNewUser(e)}} toggeleSignUp={toggeleSignUp} />}
+        {showSignUp ?
+          <SignUp signUp={e=>{signUp(e)}} handleInputToNewUser={e=>{handleInputToNewUser(e)}} toggeleSignUp={toggeleSignUp} />
+          :
+          <Login login={e=>{login(e)}} handleSignInUser={e=>{handleSignInUser(e)}} toggeleSignUp={toggeleSignUp} />
+        }
       </div>
       )
 

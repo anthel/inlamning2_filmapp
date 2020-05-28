@@ -59,10 +59,10 @@ svg {
   z-index: 100;
 }
 
-a {
+/* a {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .wrapperWatchlist {
   display: flex;

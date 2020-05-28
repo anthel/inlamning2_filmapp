@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-// mongoose.Promise = global.Promise;
-// mongoose.set("debug", process.env.NODE_ENV !== "production");
-
 const movieSchema = require("./movieSchema");
 const MovieModel = mongoose.model("MovieModel", movieSchema);
 

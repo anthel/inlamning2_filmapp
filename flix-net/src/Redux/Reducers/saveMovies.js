@@ -1,6 +1,4 @@
- const movies = [];
-
-
+const movies = [];
 
 const saveMoviesReducer = (state=movies, action) => {
   switch (action.type) {

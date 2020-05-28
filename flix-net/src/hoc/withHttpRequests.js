@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
- 
+
 export default function withHttpRequests(WrappedComponent) {
   return class extends Component {
   

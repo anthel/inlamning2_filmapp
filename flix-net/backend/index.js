@@ -1,21 +1,14 @@
 const express = require("express");
 const cors = require('cors')
 
-const { models, connectDb, MovieModel } = require("./db");
-// const { createOrUpdateStudent } = require("./routes/studentRoutes");
+const { models, connectDb } = require("./db");
 const movies = require ('./movies')
-
 const routes = require('./routes');
-
 const app = express();
 app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
-// app.put("/user/:id", createOrUpdateStudent);
-
-
-
 
 //Middleware for accessing mongo models on every request
 app.use((req, res, next) => {

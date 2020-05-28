@@ -10,18 +10,13 @@ function WatchList(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [update, setUpdate] = useState(false);
 
-  const changeUpdateState = () => {
-    setUpdate(!update)
-  }
+  const changeUpdateState = () => setUpdate(!update)
 
 useEffect(()=>{
   if(user.authenticated === true) {
-      props.getActiveUser(user.username)
-    
+    props.getActiveUser(user.username)
     .then(res => res.json())
-    .then((activeUser) => {
-        setWatchlist(activeUser.watchList)
-    })
+    .then(activeUser => setWatchlist(activeUser.watchList))
   }
   },[update])
 
@@ -32,7 +27,7 @@ useEffect(()=>{
       </div>
     )
   }
-
+  
   else {
     return (
       <div className="wrapperWatchlist">

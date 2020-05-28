@@ -60,7 +60,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit">Ante, EnFinAnka, Emma, Oscar</Link>
+      <Link color="inherit">Ante, Ted, Emma, Oscar</Link>
       {' '}
       {new Date().getFullYear()}
       {'.'}
@@ -68,13 +68,7 @@ function Copyright() {
   );
 }
 
-/**
- * @description holds the loginform and has logic for validation and feedback if something is incorrect.
- * @param props - handleSignInUser() sends inputvalues to state in LoginScreencomponent.
- * @param props - login() calls the loginfunction.
- * @param props - toggeleSignUp() for displaying this component or the Logincomponent. 
- * @returns JSX - the signupform.
- */
+
 function LoginScreen(props) {
 
   const classes = useStyles();

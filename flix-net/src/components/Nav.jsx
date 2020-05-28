@@ -10,7 +10,6 @@ import InputBase from '@material-ui/core/InputBase';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
-
 import { useDispatch, useSelector } from 'react-redux'
 import { movieResults, loggOut } from '../Redux/Actions'
 import withHttpRequests from '../hoc/withHttpRequests'
@@ -74,21 +73,18 @@ const useStyles = makeStyles((theme) =>
   const dispatch = useDispatch();
   const loggedInUser = useSelector(state => state.saveNewUserReducer)
   const {authenticated, username} = loggedInUser
+  const classes = useStyles();
 
+  const frontPage = () => history.push('/')
 
   const searchMovieTitle = e => {
-    if(history.location.pathname!== '/SearchMovies'){
+    if(history.location.pathname !== '/SearchMovies'){
       history.push('SearchMovies')
     }
     props.searchMovieTitle(e)
     .then(searchResult => dispatch(movieResults(searchResult)))
   }
 
-  const frontPage = () => {
-    history.push('/')
-  }
-
-  const classes = useStyles();
 
   return (
     <div className="navBar">
@@ -112,15 +108,13 @@ const useStyles = makeStyles((theme) =>
         <NavLink className="navLink" to='/Watchlist'><StarIcon className="navIcon"/>Watchlist</NavLink>
         <NavLink className="navLink" to='/SearchMovies'><ViewAgendaIcon className="navIcon"/>Genre</NavLink>
         {!authenticated ? 
-        <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
-        :   
-        <NavLink to="/Login" onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</NavLink>} 
-
+          <NavLink className="navLink" to='/Login'><PersonIcon className="navIcon"/>Login</NavLink> 
+          :   
+          <NavLink to="/Login" onClick={()=>{dispatch(loggOut())}} className="navLink"><PersonIcon  className="navIcon"/>Logout</NavLink>
+        }
       </div>
     </div> 
   )
 }
-
-
 
 export default withHttpRequests(Nav);

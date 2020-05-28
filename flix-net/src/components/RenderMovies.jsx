@@ -13,28 +13,25 @@ function RenderMovies(props) {
     if(usersRedux.authenticated === true) {
       props.getActiveUser(usersRedux.username)
       .then(res => res.json())
-      .then((activeUser) => {
-          setWatchList(activeUser.watchList)
-      })
+      .then(activeUser => setWatchList(activeUser.watchList))
     }
   }, [props.update])
 
-
   return (
     <>
-    {props.movies !== undefined && props.movies.length !== 0 &&
-      <div className="wrapperWatchlist">
-        {props.movies && props.movies.map(movie => {
-        const showRemove = watchList.find((film)=> film._id === movie._id)
-        return <CardComponent
-        key={movie._id}
-        movie={movie}
-        usersRedux={usersRedux}
-        showRemove={showRemove}
-        changeUpdateState={props.changeUpdateState}
-        />})}
-      </div>
-    }
+      {props.movies !== undefined && props.movies.length !== 0 &&
+        <div className="wrapperWatchlist">
+          {props.movies && props.movies.map(movie => {
+          const showRemove = watchList.find((film)=> film._id === movie._id)
+          return <CardComponent
+          key={movie._id}
+          movie={movie}
+          usersRedux={usersRedux}
+          showRemove={showRemove}
+          changeUpdateState={props.changeUpdateState}
+          />})}
+        </div>
+      }
     </>
   )
 
